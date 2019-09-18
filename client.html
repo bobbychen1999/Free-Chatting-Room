@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="utf-8">
+<title>Chatroom</title>
+
+
+
+		<style>
+		
+				textarea {
+			width: 80%;
+			height: 50px;
+			padding: 12px 20px;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			background-color: #f8f8f8;
+			font-size: 16px;
+			resize: none;
+		}
+		
+			#send, #message_input{
+				overflow: hidden;
+				display: inline-block;
+				vertical-align: middle;
+		
+			}
+			#createroom {
+		  background-color: #f4511e;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#createroom:hover {opacity: 1}
+		
+		#joinroom {
+		  background-color: #f4511e;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#joinroom:hover {opacity: 1}
+		#seeusers {
+		  background-color: #eb8221;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#seeusers:hover {opacity: 1}
+		#backlobby {
+		  background-color: #eb8221;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#backlobby:hover {opacity: 1}
+		#banuser {
+		  background-color: #614f4a;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#banuser:hover {opacity: 1}
+		#unban {
+		  background-color: #614f4a;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#unban:hover {opacity: 1}
+		#kickuser {
+		  background-color: #614f4a;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#kickuser:hover {opacity: 1}
+		
+		#privatemessage {
+		  background-color: #0da3df;
+		  border: none;
+		  color: white;
+		  padding: 4px 8px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#privatemessage:hover {opacity: 1}
+		
+		#send {
+		  background-color: #24e6cc;
+		  border: none;
+		  color: white;
+		  height : 50px;
+		  border: none;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#send:hover {opacity: 1}
+			
+		
+		#q1 {
+		  background-color: #5a92f8;
+		  border: none;
+		  color: white;
+		  padding: 6px 12px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#q1:hover {opacity: 1}
+		
+		#q2 {
+		  background-color: #15aa96;
+		  border: none;
+		  color: white;
+		  padding: 6px 12px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#q2:hover {opacity: 1}
+		
+		#q3 {
+		  background-color: #19c99d;
+		  border: none;
+		  color: white;
+		  padding: 6px 12px;
+		  text-align: center;
+		  font-size: 16px;
+		  opacity: 0.6;
+		  transition: 0.3s;
+		  display: inline-block;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		
+		#q3:hover {opacity: 1}
+			</style>
+
+			<!-- css code source: https://www.w3schools.com/css/css3_buttons.asp -->
+
+		
+
+</head>
+<body>
+	<label id="username">no user</label><br>
+	<label id="room">lobby</label><br>
+	<input type="text" id="getRoomName" placeholder="enter a roomname here"/>
+	<input type="password" id="getPassword" placeholder="enter password here(if public room enter nothing)"/>
+	<input type="button" id="createroom" value="create room"/>
+	<input type="button" id="joinroom" value="join room"/>
+	<input type="button" id="seeusers" value="member of this room"/>
+	<input type="button" id="backlobby" value= "back to lobby"/><br><br>
+	<input type="text" id="anotheruser" placeholder="enter a user's name here"/>
+	<input type="button" id="banuser" value="kick this user for this room"/>
+	<input type="button" id="unban" value="unban this user"/>
+	<input type="button" id="kickuser" value="ban this user our of this room"/>
+	<input type="button" id="privatemessage" value="send him/her a private message"/><br><br>
+	<div id="rooms"></div>
+	<div id="users"></div>
+	<div id="message_content">
+		
+		
+		<textarea id="message_input" placeholder="type a message"></textarea>
+		<button id = "send" onclick="sendMessage()">send</button><br>
+		<button id = "q1" onclick="quickreplya()">Let's chat!!!    </button>
+		<button id = "q2" onclick="quickreplyb()">Sorry guys, I need to go</button>
+		<button id = "q3" onclick="quickreplyc()">I like you idea      </button>
+
+	</div>
+	
+	<div id="chatlog"></div>
+	<div id="privatemessages"></div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	
+
+<script>
+var socketio = io.connect();
+var user = "";
+var room = "";
+
+
+while (user == ""){
+	user = prompt("Your username");
+
+}
+
+room = "lobby";
+document.getElementById("username").innerHTML = "username: "+ user;
+// hide all functions when the user is not signed in
+$("#anotheruser").hide();
+$("#backlobby").hide();
+$("#banuser").hide();
+$("#kickuser").hide();
+$("#privatemessage").hide();
+$("#message_content").hide();
+$("#seeusers").hide();
+$("#unban").hide();
+
+// what should be displayed in the lobby layout 
+function enter_lobby() {
+	if (room == "lobby") {
+		alert("you are already in the lobby");
+		return;
+	}
+	alert("You have been entered the lobby");
+	$("#anotheruser").hide();
+$("#backlobby").hide();
+$("#banuser").hide();
+$("#kickuser").hide();
+$("#anotheruser").hide();
+$("#privatemessage").hide();
+$("#seeusers").hide();
+$("#message_content").hide();
+$("#unban").hide();
+document.getElementById("chatlog").innerHTML = "";
+
+$("#createroom").show();
+				$("#joinroom").show();
+				$("#getPassword").show();
+				$("#getRoomName").show();
+	
+	socketio.emit("lobby_request", {name: user, room:room});
+	room = "lobby";
+	document.getElementById("room").innerHTML = "current room: " + room;
+}
+
+//the three functions below are for the quickreply
+function quickreplya(){
+	var msg = "Let's chat!!!"
+	socketio.emit("message_to_server", {message:msg, user: user, room:room});
+
+
+}
+function quickreplyb(){
+		
+	var msg = "Sorry guys, I need to go"
+	socketio.emit("message_to_server", {message:msg, user: user, room:room});
+
+
+	}
+function quickreplyc(){
+		
+	var msg = "I like your idea"
+	socketio.emit("message_to_server", {message:msg, user: user, room:room});
+
+
+
+	}
+//when "send" is clicked, we send the data to the server.js
+function sendMessage(){
+		 var msg = document.getElementById("message_input").value;
+         socketio.emit("message_to_server", {message:msg, user: user, room:room});
+      }
+//receive data from pm_server in server.js
+socketio.on("message_to_client",function(data) {
+		 if(room == data["room"]){
+
+		 
+				document.getElementById("chatlog").appendChild(document.createElement("hr"));
+         document.getElementById("chatlog").appendChild(document.createTextNode(data['message']));
+			 
+}
+		 
+        
+      });
+
+
+
+//ban/kick
+	socketio.on("ban/kick_response", function(data){
+		var m = data["message"];
+		var u = data["to"];
+		if (u == user) alert(m);
+	});
+	socketio.on("banned/kicked", function(data){
+		var m = data["message"];
+		var u = data["to"];
+		if (u == user) {
+			alert(m);
+			enter_lobby();
+		}
+	});
+	// after create a room
+	socketio.on("create_response", function(data){
+		var m = data["message"];
+		var u = data["to"];
+		if (u == user) {
+			alert(m);
+			if (m == "room created") {
+				room = data["rm"];
+				alert("You have entered room: " + room);
+				document.getElementById("room").innerHTML = "current room: "+room;
+
+				$("#anotheruser").show();
+				$("#backlobby").show();
+				$("#banuser").show();
+				$("#kickuser").show();
+				$("#privatemessage").show();
+				$("#createroom").hide();
+				$("#joinroom").hide();
+				$("#getPassword").hide();
+				$("#getRoomName").hide();
+				$("#message_content").show();
+				$("#seeusers").show();
+				$("#unban").show();
+
+			}
+		}
+	});
+
+	// after the private message sent
+	socketio.on("private_message", function(data){
+		if(data["receiver"] == user){
+			alert("private message!!!" + data["sender"]+": " + data["message"]);
+			
+		}
+	});
+
+	//when the send private message button is clicked 
+	function send_pm(){
+		var sendto = document.getElementById("anotheruser").value;
+		var message = prompt("your message");
+		if(sendto != "" && message != ""){
+		socketio.emit("pm_server", {sender:user, receiver:sendto, message:message, room:room});
+		document.getElementById("anotheruser").value = "";
+		}else{
+			alert("input is empty");
+		}
+	}
+
+	document.getElementById('privatemessage').addEventListener("click",send_pm,false);
+	
+	//member's list
+	socketio.on("see_response", function(data){
+		if (user == data["receiver"]) {
+			alert("You will be seeing a list of members of this room");
+			alert(data["list"]);
+		}
+	});
+	//join the room
+	socketio.on("join_response", function(data){
+		if (data["to"] == user) {
+			alert(data["message"]);
+			if (data["message"]=="success") {
+				room = data["new_room"];
+				document.getElementById("room").innerHTML = "current room: "+room;
+
+				$("#anotheruser").show();
+				$("#backlobby").show();
+				if (data["owner"] == user) {
+					$("#banuser").show();
+					$("#kickuser").show();
+					$("#unban").show();
+
+				}
+				$("#privatemessage").show();
+				$("#createroom").hide();
+				$("#joinroom").hide();
+				$("#getPassword").hide();
+				$("#getRoomName").hide();
+				$("#message_content").show();
+				$("#seeusers").show();
+
+
+			}
+		}
+	});
+
+
+document.getElementById("banuser").addEventListener("click", function(event){
+	var ban_user = document.getElementById("anotheruser").value;
+	if (ban_user == "") {
+		alert("Please enter a name first");
+		return;
+	}
+	socketio.emit("ban_request", {room: room, user: ban_user});
+});
+
+document.getElementById("kickuser").addEventListener("click", function(event){
+	var kick_user = document.getElementById("anotheruser").value;
+	if (kick_user == "") {
+		alert("Please enter a name first");
+		return;
+	}
+	socketio.emit("kick_request", {room: room, user: kick_user});
+});
+
+document.getElementById("backlobby").addEventListener("click", function(event){
+alert("entering lobby");
+	enter_lobby();
+});
+
+document.getElementById("createroom").addEventListener("click", function(event){
+	var room_name = document.getElementById("getRoomName").value;
+	while(room_name==""){
+		alert("invalid input");
+	}
+	var pwd=document.getElementById("getPassword").value;
+	socketio.emit("create_request", {room_name:room_name, pwd: pwd, from: user});
+});
+
+document.getElementById("joinroom").addEventListener("click", function(event){
+	var room_name = document.getElementById("getRoomName").value;
+	var pwd = document.getElementById("getPassword").value;
+	socketio.emit("join_request", {room_name:room_name, pwd:pwd, from: user, curr_room:room});
+});
+document.getElementById("seeusers").addEventListener("click", function(event){
+	socketio.emit("see_request", {from: user, room: room});
+});
+
+document.getElementById("unban").addEventListener("click", function(event) {
+	socketio.emit("unban_request", {room:room, user:document.getElementById("anotheruser").value})
+});
+
+	socketio.on("unban_response", function(data) {
+		if (user == data["to"]) alert(data["message"]);
+	});
+	  
+</script>
+
+
+
+
+</body>
+</html>
