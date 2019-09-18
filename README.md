@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Bobby Chen and Martin Zhang's repo for CSE 330S module 6 group portion
+* Bobby Chen and Martin Zhang's repo for online chatting room
 
 ### How do I get set up? ###
 
